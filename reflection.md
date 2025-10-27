@@ -1,14 +1,15 @@
 # Reflection
 
 1. Which issues were the easiest to fix, and which were the hardest?
-- Easiest: style issues (f-strings, using with open) because they are mechanical and low risk.
-- Hardest: replacing bare except blocks and deciding whether to raise errors or ignore them — required thinking about intended behavior.
+-The easiest issues to fix were the basic code-quality problems flagged by Flake8 and Pylint.
+-The hardest issues to fix were the security and logic problems identified by Bandit and Pylint
 
 2. Did the static analysis tools report any false positives?
-- Bandit sometimes flags patterns that are acceptable in controlled scripts (for example, certain uses of JSON loading), but in general its flags are helpful and motivated safer code.
+- Pylint flagged some variables and logging calls as “unused” or “redundant,” even though they were actually being used for debugging and record-keeping purposes.
 
 3. How to integrate static analysis into development workflow?
-- Add flake8/pylint/bandit to CI (GitHub Actions) to run on each PR. Use pre-commit hooks locally to catch problems before committing.
+- I would integrate Pylint, Bandit, and Flake8 into my workflow using pre-commit hooks and CI pipelines to automatically check code quality, security, and style before merging or deploying.
 
 4. Tangible improvements after fixes?
-- More robust input handling, improved logging, no dangerous eval calls, consistent JSON handling, and PEP8 improvements which aid readability and maintainability.
+- The code became more secure, readable, and maintainable with proper error handling, input validation, logging, and safe file operations replacing risky or unclear practices.
+
